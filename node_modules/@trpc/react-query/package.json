@@ -1,0 +1,95 @@
+{
+  "name": "@trpc/react-query",
+  "version": "10.45.2",
+  "description": "The tRPC React library",
+  "author": "KATT",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "typings": "dist/index.d.ts",
+  "homepage": "https://trpc.io",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trpc/trpc.git",
+    "directory": "packages/react"
+  },
+  "scripts": {
+    "build": "rollup --config rollup.config.ts --configPlugin rollup-plugin-swc3",
+    "dev": "pnpm build --watch",
+    "codegen-entrypoints": "tsx entrypoints.script.ts",
+    "lint": "eslint --cache --ext \".js,.ts,.tsx\" --ignore-path ../../.gitignore --report-unused-disable-directives src",
+    "ts-watch": "tsc --watch"
+  },
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./server": {
+      "import": "./dist/server/index.mjs",
+      "require": "./dist/server/index.js",
+      "default": "./dist/server/index.js"
+    },
+    "./shared": {
+      "import": "./dist/shared/index.mjs",
+      "require": "./dist/shared/index.js",
+      "default": "./dist/shared/index.js"
+    },
+    "./ssg": {
+      "import": "./dist/ssg/index.mjs",
+      "require": "./dist/ssg/index.js",
+      "default": "./dist/ssg/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "package.json",
+    "server",
+    "shared",
+    "ssg",
+    "!**/*.test.*"
+  ],
+  "eslintConfig": {
+    "rules": {
+      "react-hooks/exhaustive-deps": "error",
+      "no-restricted-imports": [
+        "error",
+        "@trpc/react-query"
+      ]
+    }
+  },
+  "peerDependencies": {
+    "@tanstack/react-query": "^4.18.0",
+    "@trpc/client": "10.45.2",
+    "@trpc/server": "10.45.2",
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "devDependencies": {
+    "@tanstack/react-query": "^4.18.0",
+    "@trpc/client": "10.45.2",
+    "@trpc/server": "10.45.2",
+    "@types/express": "^4.17.17",
+    "@types/node": "^20.10.0",
+    "@types/react": "^18.2.33",
+    "eslint": "^8.40.0",
+    "express": "^4.17.1",
+    "next": "^14.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rollup": "^2.79.1",
+    "tsx": "^4.0.0",
+    "zod": "^3.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "funding": [
+    "https://trpc.io/sponsor"
+  ],
+  "gitHead": "936db6dd2598337758e29c843ff66984ed54faaf"
+}
